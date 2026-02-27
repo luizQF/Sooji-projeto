@@ -15,6 +15,7 @@ module.exports = {
         'fourth-color': '#0a6897',
         'white-color': '#ffffff',
         'danger-color': '#e3342f',
+        'grayText-color': '#5e5d5c',
       },
       fontFamily: {
         sans: [
