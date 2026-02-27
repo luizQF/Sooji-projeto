@@ -14,7 +14,7 @@ $textClasses = $ativo
 @endphp
 
 <div class="grow border-b-2 transition-all {{ $textClasses }} {{ $containerClasses }}">
-    <a href="{{ route($route) }}" class="mb-4 flex flex-col items-center justify-center mb-1">
+    <a href="{{ route($route) }}" class="mb-4 flex flex-col items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mb-1">
             <!--Slot (funciona como um rascunho para o conteudo q irá ser inserido, nesse caso o SVG-->
             {{ $slot }}

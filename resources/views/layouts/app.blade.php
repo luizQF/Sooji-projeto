@@ -66,7 +66,7 @@
     </nav>
     
     <main class="flex justify-center ">
-        <section class="h-full flex justify-center flex-col gap-4 p-7 rounded-lg  max-w-[75vw]">
+        <section class="w-full h-full flex justify-center flex-col gap-4 p-7 rounded-lg  max-w-[75vw]">
         
         {{-- O conteúdo da página será "jogado" aqui --}}
             @yield('content')
