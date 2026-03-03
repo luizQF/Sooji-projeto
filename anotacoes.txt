@@ -1,0 +1,3 @@
+podemos passar dados pro front enviando por compact ex 
+ $tarefas = auth()->user()->tarefas;
+        return view('perfil', compact('tarefas'));

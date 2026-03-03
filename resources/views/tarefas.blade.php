@@ -27,47 +27,62 @@
     </div>  
 
     
-
+    
     <div class="grid flex-col grid-cols-1 gap-2 w-full">
-    <h2 class="font-bold mt-2 text-lg">Pendentes (0)</h2>
-        <div>
-            <div class="rounded-lg p-4 shadow-sm border border-gray-200 flex items-center gap-4">
+    <h2 class="font-bold mt-2 text-lg">Pendentes ({{ $tarefas->where('situacaoAtual', 'pendente')->count() }})</h2> 
+
+        @forelse ($tarefas->where('situacaoAtual', 'pendente') as $tarefa)
+                
                 <div>
-                    <h3 class="font-bold">Sem Tarefas</h3>
-                    <p class="text-sm text-grayText-color">Crie uma <strong>nova tarefa</strong> para começar.</p>
+                    <div class="rounded-lg p-4 shadow-sm border border-gray-200 flex items-center gap-4">
+                        <div>
+                            <h3 class="font-bold">{{ $tarefa->name }}</h3>
+                            <p class="text-sm text-grayText-color">{{ $tarefa->descricao }}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+            @empty
+
+                <div>
+                    <div class="rounded-lg p-4 shadow-sm border border-gray-200 flex items-center gap-4">
+                        <div>
+                            <h3 class="font-bold">Sem Tarefas</h3>
+                            <p class="text-sm text-grayText-color">Termine uma <strong>tarefa</strong> para vizualizar.</p>
+                        </div>
+                    </div>
+                </div>
+    
+        @endforelse
+    
     </div>
-        
   <div class="grid flex-col grid-cols-1 gap-2 w-full">
-    <h2 class="font-bold mt-2 text-lg">Concluídas (0)</h2>
-        <div>
-            <div class="rounded-lg p-4 shadow-sm border border-gray-200 flex items-center gap-4">
+    <h2 class="font-bold mt-2 text-lg">Concluídas ({{ $tarefas->where('situacaoAtual', 'concluida')->count() }})</h2>
+
+
+        @forelse ($tarefas->where('situacaoAtual', 'concluida') as $tarefa)
+                
                 <div>
-                    <h3 class="font-bold">Sem Tarefas Concluídas</h3>
-                    <p class="text-sm text-grayText-color">Conclua alguma <strong>tarefa</strong> para vizualizar.</p>
+                    <div class="rounded-lg p-4 shadow-sm border border-gray-200 flex items-center gap-4">
+                        <div>
+                            <h3 class="font-bold">{{ $tarefa->name }}</h3>
+                            <p class="text-sm text-grayText-color">{{ $tarefa->descricao }}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+            @empty
+
+                <div>
+                    <div class="rounded-lg p-4 shadow-sm border border-gray-200 flex items-center gap-4">
+                        <div>
+                            <h3 class="font-bold">Sem Tarefas</h3>
+                            <p class="text-sm text-grayText-color">Termine uma <strong>tarefa</strong> para vizualizar.</p>
+                        </div>
+                    </div>
+                </div>
+    
+        @endforelse
     </div>
 
 @endsection
-<!-- Página dinâmica de tarefas, onde as tarefas pendentes e concluídas serão listadas.
-<div class="grid flex-col grid-cols-1 gap-2 w-full">
-    <h2 class="font-bold mt-2 text-lg">Pendentes ({{ $tarefasPendentes->count() }})</h2>
-    
-    @forelse($tarefasPendentes as $tarefa)
-        <div class="rounded-lg p-4 shadow-sm border border-gray-200">
-            {{ $tarefa->titulo }}
-        </div>
-    @empty
-        <div class="rounded-lg p-4 shadow-sm border border-dashed border-gray-300 flex items-center gap-4 bg-gray-50">
-            <div>
-                <h3 class="font-bold text-gray-500">Sem Tarefas</h3>
-                <p class="text-sm text-gray-400">Crie uma <strong>nova tarefa</strong> para começar.</p>
-            </div>
-        </div>
-    @endforelse
-</div>
--->

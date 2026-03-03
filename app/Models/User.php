@@ -32,7 +32,10 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    public function tarefas()
+    {
+        return $this->hasMany(Tarefa::class);
+    }
     /**
      * Get the attributes that should be cast.
      *

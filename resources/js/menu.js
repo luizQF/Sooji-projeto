@@ -1,19 +1,10 @@
-
-document.addEventListener('DOMContentLoaded', function() {
-    const menuButton = document.getElementById('menu-button');
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('menu-btn');
     const menu = document.getElementById('menu');
 
-    menuButton.addEventListener('click', function() {
+    menuBtn.addEventListener('click', () => {
+        // Abre/Fecha o menu
         menu.classList.toggle('hidden');
-        const imgHamburger = document.getElementById('img-hamburger');
-        const imgClose = document.getElementById('img-close');
-        imgHamburger.classList.toggle('scale-0');
-        imgHamburger.classList.toggle('opacity-0');
-        imgHamburger.classList.toggle('rotate-90');
-
-        
-        imgClose.classList.toggle('scale-100');
-        imgClose.classList.toggle('opacity-100');
-        imgClose.classList.toggle('rotate-0');
+        menu.classList.toggle('flex');
     });
 });
