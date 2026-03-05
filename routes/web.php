@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResgristoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashController;
+
 Route::get("/", function(){
     return view("login");
 })->name('login');
@@ -18,11 +20,10 @@ Route::get("/cadastrar", [ResgristoController::class, 'index'])->name('cadastro.
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/home', function () {
-        return view('home');
-    })->name('home');
+    Route::get('/home', [DashController::class, 'index'])->name('home');
 
     Route::get('/tarefas', [TarefaController::class,'index'])->name('tarefas');
+    Route::post('/tarefas/create', [TarefaController::class,'store'])->name('tarefas.create');
 
     Route::get('/calendario', function () {
         return view('calendario');

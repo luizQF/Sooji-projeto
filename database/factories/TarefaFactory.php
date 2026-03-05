@@ -20,7 +20,7 @@ class TarefaFactory extends Factory
             'name' => fake()->name(),
             'descricao' => fake()->sentence(),
             'situacaoAtual' => fake()->randomElement(['pendente', 'concluida']),
-            'user_id' => 21,
+            'user_id' => 43,
         ];
     }
 }

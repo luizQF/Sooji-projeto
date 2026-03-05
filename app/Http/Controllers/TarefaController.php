@@ -16,13 +16,15 @@ class TarefaController extends Controller
     public function store(Request $request){
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'situacaoAtual' => 'required|in:pendente,concluida,vencida',
+            'descricao' => 'nullable',
+            'venc_date' => 'nullable|date'
         ]);
 
         Tarefa::create([
             'name' => $validated['name'],
-            'situacaoAtual' => 'pendente',
+            'descricao' => $validated['descricao'] ?? null,
             'user_id' => auth()->id(),
+            'venc_date' => $validated['venc_date'] ?? null,
         ]);
         return redirect()->route('tarefas')->with('success','');
     }

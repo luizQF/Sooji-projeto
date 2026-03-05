@@ -17,6 +17,8 @@ return new class extends Migration
             $table->enum('situacaoAtual', ['pendente', 'concluida', 'vencida'])->default('pendente');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('descricao')->nullable();
+            $table->json('dias')->nullable();
+            $table->date('venc_date')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tarefas');
+        Schema::table('tarefas', function (Blueprint $table){
+            $table->dropColumn('venc_date', 'situacaoAtual');
+        });
     }
 };

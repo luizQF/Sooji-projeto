@@ -6,7 +6,7 @@
 
     <h1 class="text-2xl font-bold">Bem vindo ao Sooji</h1>
 
-    <p class="text-thin text-grayText-color">
+    <p class="text-thin text-grayText-color mb-5">
         O Sooji é um sistema de gerenciamento de tarefas que ajuda você a organizar 
         suas atividades diárias de forma eficiente. Com uma interface intuitiva 
         e recursos poderosos...
@@ -18,7 +18,7 @@
 
             <!-- Card de Tarefas Hoje -->  
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /> 
-            4
+            {{ $dash->count() }}
 
         </x-dashboard-card>
 
@@ -26,7 +26,7 @@
 
             <!-- Card de Tarefas Concluídas -->
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            1
+            {{ $dash->where('situacaoAtual', 'concluida')->count() }}
 
         </x-dashboard-card>
 
@@ -34,7 +34,7 @@
 
             <!-- Card de Tarefas Pendentes -->
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
-            2
+            {{ $dash->where('situacaoAtual', 'pendente')->count() }}
 
         </x-dashboard-card>
 
@@ -42,7 +42,7 @@
 
             <!-- Card de Tarefas Vencidas (passadas do prazo) -->
             <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            1
+            {{ $dash->where('situacaoAtual', 'vencida')->count() }}
 
         </x-dashboard-card>
 
@@ -50,8 +50,12 @@
 
             <!-- Card de Produtividade -->
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
-            88.7%
-
+            @if ($dash->count() != 0)
+                {{ ($dash->where('situacaoAtual', 'concluida')->count() / $dash->count()) * 100 }}%
+            @else
+                0%
+            @endif
+             
         </x-dashboard-card>
 
     </div>
@@ -72,5 +76,6 @@
             </li>
         </ul>
     </div>
-
+    
+    
 @endsection
