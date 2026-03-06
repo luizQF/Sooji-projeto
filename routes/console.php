@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 
 Schedule::call(function () {
-    Tarefa::where('due_date', '<', Carbon::today())
+    Tarefa::where('venc_date', '<', Carbon::today())
         ->where('situacaoAtual', 'pendente')
         ->update(['situacaoAtual' => 'vencido']);
 })->daily();

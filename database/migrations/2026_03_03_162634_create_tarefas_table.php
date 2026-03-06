@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tarefas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('situacaoAtual', ['pendente', 'concluida', 'vencida'])->default('pendente');
+            $table->enum('situacaoAtual', ['pendente', 'concluida', 'vencido'])->default('pendente');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('descricao')->nullable();
             $table->json('dias')->nullable();
