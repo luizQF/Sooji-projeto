@@ -17,7 +17,7 @@ return new class extends Migration
             $table->enum('situacaoAtual', ['pendente', 'concluida', 'vencido'])->default('pendente');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('descricao')->nullable();
-            $table->json('dias')->nullable();
+            $table->string('categoria')->nullable();
             $table->date('venc_date')->nullable();
             $table->timestamps();
         });

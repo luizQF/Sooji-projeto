@@ -8,11 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tarefa extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'situacaoAtual', 'user_id', 'descricao', 'venc_date'];
-
-    protected $casts = [
-        'dias'=> 'array',
-    ];
+    protected $fillable = ['name', 'situacaoAtual', 'user_id', 'descricao', 'venc_date', 'categoria'];
 
     public function user()
     {

@@ -24,7 +24,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/tarefas', [TarefaController::class,'index'])->name('tarefas');
     Route::post('/tarefas/create', [TarefaController::class,'store'])->name('tarefas.create');
-
+    Route::delete('tarefas/{id}', [TarefaController::class, 'destroy'])->name('tarefas.destroy');
+    Route::patch('tarefas/{id}/check', [TarefaController::class, 'check'])->name('tarefas.check');
     Route::get('/calendario', function () {
         return view('calendario');
     })->name('calendario');
