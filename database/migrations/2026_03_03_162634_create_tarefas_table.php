@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('descricao')->nullable();
             $table->string('categoria')->nullable();
             $table->date('venc_date')->nullable();
+            $table->string('tags')->nullable();
             $table->timestamps();
         });
     }

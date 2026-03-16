@@ -15,10 +15,11 @@ class TarefaController extends Controller
     }
     public function store(Request $request){
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name'      => 'required|string|max:255',
             'descricao' => 'nullable',
             'venc_date' => 'nullable|date',
             'categoria' => 'required',
+            'tags'      => 'nullable'
         ]);
 
         Tarefa::create([
@@ -45,5 +46,23 @@ class TarefaController extends Controller
         ]);
         $item->save();
         return redirect()->route('tarefas')->with('sucess', 'Tarefa Concluida');
+    }
+
+    public function getTasks(Request $request){
+            // Busca tarefas entre o intervalo de datas do calendário
+        $tarefas = Tarefa::whereDate('venc_date', '>=', $request->start)
+                 ->whereDate('venc_date', '<=', $request->end)
+                 ->get();
+
+        $events = [];
+        foreach ($tarefas as $tarefa) {
+            $events[] = [
+                'title' => $tarefa->titulo,
+                'start' => $tarefa->venc_date, 
+                'url'   => route('tasks.show', $tarefa->id),
+              
+            ];
+        }
+        return response()->json($events);
     }
 }

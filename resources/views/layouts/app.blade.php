@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800&display=swap" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href='https://cdn.jsdelivr.net' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net'></script>
+
 </head>
 
 <body class="font-sans text-gray-900 antialiased bg-gray-50">

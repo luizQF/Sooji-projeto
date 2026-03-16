@@ -7,7 +7,7 @@ use App\Http\Controllers\ResgristoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashController;
-
+use App\Http\Controllers\PluggyWebhookControler;
 Route::get("/", function(){
     return view("login");
 })->name('login');
@@ -17,7 +17,7 @@ Route::post("/logout", [AuthController::class, 'logout'])->name('logout');
 
 Route::post("/cadastro", [ResgristoController::class, 'store'])->name('cadastro.store');
 Route::get("/cadastrar", [ResgristoController::class, 'index'])->name('cadastro.index');
-
+Route::post('/webhooks/pluggy', [PluggyWebhookControler::class, 'handle']); 
 Route::middleware('auth')->group(function () {
 
     Route::get('/home', [DashController::class, 'index'])->name('home');

@@ -63,7 +63,7 @@
             ></div>
 
             {{-- Caixa do Formulário --}}
-            <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="flex items-center justify-center min-h-screen p-8">
                 <div 
                     x-show="openModal"
                     x-transition:enter="transition ease-out duration-300"
@@ -79,33 +79,35 @@
                     </div>
 
                     {{-- Formulário --}}
-                    <form action="{{ route('tarefas.create') }}" method="POST" class="flex flex-col gap-4">
-                        @csrf
+                        <form action="{{ route('tarefas.create') }}" method="POST" class="flex flex-col gap-4">
+                            @csrf
                         
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Título</label>
-                            <input type="text" name="name" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-primary-color outline-none" placeholder="Ex: Estudar Laravel" required>
-                        </div>
-                       
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Descrição</label>
-                            <textarea name="descricao" rows="3" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-primary-color outline-none" placeholder="Detalhes da tarefa..."></textarea>
-                        </div>
-        
-                        <x-category-card label="Estudos" task="estudo">
-
-                        </x-category-card>
-
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Prazo da tarefa</label>
-                            <input type="date" name="venc_date" class="border border-gray-300 p-2">
-                            <p class="text-[10px] mt-2 text-gray-500">Caso não possua deixar em branco</p>
-                        </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Título</label>
+                                <input type="text" name="name" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-primary-color outline-none" placeholder="Ex: Estudar Laravel" required>
+                            </div>
                         
-                        <button type="submit" @click="openModal = false" class="bg-primary-color text-white font-bold py-2 rounded-lg hover:bg-secondary-color transition-all">
-                            Criar Tarefa
-                        </button>
-                    </form>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Descrição</label>
+                                <textarea name="descricao" rows="3" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-primary-color outline-none" placeholder="Detalhes da tarefa..."></textarea>
+                            </div>
+                            <x-category-card label="Estudos" task="estudo">
+                            </x-category-card>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Prazo da tarefa</label>
+                                <input type="date" name="venc_date" class="border border-gray-300 p-2">
+                                <p class="text-[10px] mt-2 text-gray-500">Caso não possua deixar em branco</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Tags</label>
+                                <input type="text" name="tags" class="w-full border rounded-lg border-gray-300 p-2" placeholder="Separe as tags por &quot,&quot Ex: casa, urgente, joão">
+                                <p class="text-[10px] mt-2 text-gray-500">Caso não possua deixar em branco</p>
+                            </div>
+                        
+                            <button type="submit" @click="openModal = false" class="bg-primary-color text-white font-bold py-2 rounded-lg hover:bg-secondary-color transition-all">
+                                Criar Tarefa
+                            </button>
+                        </form>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ Schedule::call(function () {
     Tarefa::where('venc_date', '<', Carbon::today())
         ->where('situacaoAtual', 'pendente')
         ->update(['situacaoAtual' => 'vencido']);
-})->daily();
+})->everyMinute();
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
