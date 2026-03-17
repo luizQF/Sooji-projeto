@@ -18,7 +18,6 @@ class TarefaController extends Controller
         $validated = $request->validate([
             'name'      => 'required|string|max:255',
             'descricao' => 'nullable',
-            'group_id'  => 'nullable|exists:groups,id',
             'venc_date' => 'nullable|date',
             'categoria' => 'required',
             'tags'      => 'nullable'
@@ -28,7 +27,7 @@ class TarefaController extends Controller
             'name'      => $validated['name'],
             'descricao' => $validated['descricao'] ?? null,
             'user_id'   => auth()->id(),
-            'group_id'  => $validated['group_id'],
+            'tags'      => $validated['tags'],
             'venc_date' => $validated['venc_date'] ?? null,
             'categoria' => $validated['categoria'],
         ]);

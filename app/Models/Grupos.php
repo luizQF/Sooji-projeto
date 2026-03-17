@@ -9,7 +9,8 @@ class Grupos extends Model
 {
     /** @use HasFactory<\Database\Factories\GruposFactory> */
     use HasFactory;
-    protected $fillable = ['name', 'desc', 'tarefa_id'];
+    protected $table = 'grupos';
+    protected $fillable = ['name', 'desc', 'tarefa_id', 'user_id'];
 
     public function tarefa(){
         return $this->hasMany(Tarefa::class);

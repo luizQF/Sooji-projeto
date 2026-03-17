@@ -22,7 +22,8 @@ Route::get("/cadastrar", [ResgristoController::class, 'index'])->name('cadastro.
 Route::middleware('auth')->group(function () {
 
     Route::get('/home', [DashController::class, 'index'])->name('home');
-    Route::post('/grupos', [GruposController::class, 'store'])->name('grupos.store');
+    Route::post('/grupos/create', [GruposController::class, 'store'])->name('grupos.create');
+    Route::delete('/grupos/{id}', [GruposController::class, 'destroy'])->name('grupos.destroy');
     Route::get('/tarefas', [TarefaController::class,'index'])->name('tarefas');
     Route::post('/tarefas/create', [TarefaController::class,'store'])->name('tarefas.create');
     Route::delete('tarefas/{id}', [TarefaController::class, 'destroy'])->name('tarefas.destroy');

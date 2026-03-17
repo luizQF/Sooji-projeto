@@ -49,7 +49,14 @@
                         </svg>
 
                         {{ $tarefa->venc_date ? date('d/m/Y', strtotime($tarefa->venc_date)) : "Sem prazo" }}
+                        
                     </p>
+                
+                    @foreach (explode(',', $tarefa->tags) as $tag)
+                        @if($tag)
+                            <p class="flex text-sm text-gray-700 bg-gray-100 px-2 py-0.5 rounded-lg">#{{ $tag }}</p>
+                        @endif
+                    @endforeach
                 </div>
             </div> 
             {{-- Ícones e lógica de concluído e deletado --}}
