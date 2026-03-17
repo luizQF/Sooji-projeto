@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tarefa extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'situacaoAtual', 'user_id', 'descricao', 'venc_date', 'categoria', 'tags'];
+    protected $fillable = ['name', 'situacaoAtual', 'user_id', 'descricao', 'venc_date', 'categoria', 'tags', 'grupo_id'];
 
     public function user()
     {

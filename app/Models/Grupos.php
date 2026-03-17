@@ -12,7 +12,7 @@ class Grupos extends Model
     protected $table = 'grupos';
     protected $fillable = ['name', 'desc', 'tarefa_id', 'user_id'];
 
-    public function tarefa(){
-        return $this->hasMany(Tarefa::class);
+    public function tarefas(){
+        return $this->hasMany(Tarefa::class, 'grupo_id');
     }
 }

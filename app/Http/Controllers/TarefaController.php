@@ -20,11 +20,13 @@ class TarefaController extends Controller
             'descricao' => 'nullable',
             'venc_date' => 'nullable|date',
             'categoria' => 'required',
-            'tags'      => 'nullable'
+            'grupo_id'  => 'nullable',
+            'tags'      => 'nullable',
         ]);
 
         Tarefa::create([
             'name'      => $validated['name'],
+            'grupo_id'  => $validated['grupo_id'] ?? null,
             'descricao' => $validated['descricao'] ?? null,
             'user_id'   => auth()->id(),
             'tags'      => $validated['tags'],

@@ -1,6 +1,5 @@
-@props(['situacao' => []])      
+@props(['tarefa'])      
 
-@forelse ($situacao as $tarefa)
     {{-- Lógica da cor label da tarefa --}}
     <?php
         $corFiltro = [
@@ -33,7 +32,6 @@
                 <h3 class="font-bold text-xl capitalize leading-tight">{{ $tarefa->name }}</h3>
                 
                 <p class="text-grayText-color">{{ $tarefa->descricao }}</p>
-                
                 <div class="flex items-center gap-3 mt-1 ">
                     <p class="flex text-sm text-blue-700 bg-blue-100  px-2 py-0.5 rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -85,13 +83,3 @@
             </div>
         </div>
     </div>
-@empty
-    <div>
-        <div class="rounded-lg p-4 shadow-sm border border-gray-200 flex items-center gap-4">
-            <div>
-                <h3 class="font-bold text-xl">Sem Tarefas</h3>
-                <p class="text-sm text-grayText-color">Termine uma <strong>tarefa</strong> para vizualizar.</p>
-            </div>
-        </div>
-    </div>
-@endforelse
