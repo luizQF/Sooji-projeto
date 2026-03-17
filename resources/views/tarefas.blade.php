@@ -49,7 +49,11 @@
     <div class="grid flex-col grid-cols-1 gap-2 w-full">
 
         <h2 class="font-bold mt-2 text-lg">Vencidas ({{ $tarefas->where('situacaoAtual', 'vencido')->count() }})</h2>
-    
+        @forelse ($grupos as $grupo)
+                <h2 class="font-bold mt-2 text-lg">{{ $grupo->name }}</h2>
+        @empty
+            <h2>sem grupos</h2>
+        @endforelse
         <x-task-card :situacao="$tarefas->where('situacaoAtual', 'vencido')" s="$tarefa">
         </x-task-card>
 
