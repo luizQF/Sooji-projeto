@@ -20,8 +20,7 @@
     <div class="grid flex-col grid-cols-1 gap-2 w-full">
 
         <h2 class="font-bold mt-2 text-lg">Pendentes ({{ $tarefas->where('situacaoAtual', 'pendente')->count() }})</h2> 
-
-        <x-task-card :situacao="$tarefas->where('situacaoAtual', 'pendente')" tarefa="$tarefa">
+        <x-task-card :situacao="$tarefas->where('situacaoAtual', 'pendente')">
         </x-task-card>
     
     </div>
@@ -29,8 +28,8 @@
     <div class="grid flex-col grid-cols-1 gap-2 w-full">
 
         <h2 class="font-bold mt-2 text-lg">Concluídas ({{ $tarefas->where('situacaoAtual', 'concluida')->count() }})</h2>
-
-        <x-task-card :situacao="$tarefas->where('situacaoAtual', 'concluida')" tarefa="$tarefa">
+    
+        <x-task-card :situacao="$tarefas->where('situacaoAtual', 'concluida')">
         </x-task-card>
 
     </div>
@@ -39,7 +38,7 @@
 
         <h2 class="font-bold mt-2 text-lg">Vencidas ({{ $tarefas->where('situacaoAtual', 'vencido')->count() }})</h2>
     
-        <x-task-card :situacao="$tarefas->where('situacaoAtual', 'vencido')" tarefa="$tarefa">
+        <x-task-card :situacao="$tarefas->where('situacaoAtual', 'vencido')" s="$tarefa">
         </x-task-card>
 
     </div>
@@ -83,7 +82,7 @@
                             @csrf
                         
                             <div>
-                                <label class="block text-sm font-medium mb-1">Título</label>
+                                <label class="block text-sm font-medium mb-1">Título*</label>
                                 <input type="text" name="name" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-primary-color outline-none" placeholder="Ex: Estudar Laravel" required>
                             </div>
                         
@@ -103,7 +102,21 @@
                                 <input type="text" name="tags" class="w-full border rounded-lg border-gray-300 p-2" placeholder="Separe as tags por &quot,&quot Ex: casa, urgente, joão">
                                 <p class="text-[10px] mt-2 text-gray-500">Caso não possua deixar em branco</p>
                             </div>
-                        
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Grupo</label>
+                                <select name="grupo_id" id="grupo" class="w-full border rounded-lg border-gray-300 p-2">
+                                @forelse ($grupos as $grupo)
+                                    <option value="{{ $grupo->id }}">
+                                        {{ $grupo->name }}
+                                    </option>
+                                @empty
+                                    <option>
+                                        Sem Grupos Diponíveis
+                                    </option>
+                                @endforelse
+                                </select>
+                                <p class="text-[10px] mt-2 text-gray-500">Caso não possua deixar em branco</p>
+                            </div>
                             <button type="submit" @click="openModal = false" class="bg-primary-color text-white font-bold py-2 rounded-lg hover:bg-secondary-color transition-all">
                                 Criar Tarefa
                             </button>

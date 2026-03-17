@@ -14,4 +14,7 @@ class Tarefa extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function group(){
+        return $this->belongsTo(Grupos::class);
+    }
 }

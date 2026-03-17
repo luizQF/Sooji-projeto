@@ -1,7 +1,7 @@
 <div x-data="{ categoria: '' }" class="space-y-4 mb-3">
     <input type="hidden" name="categoria" :value="categoria" required>
 
-    <label class="block text-sm font-medium mb-2">Selecione uma categoria</label>
+    <label class="block text-sm font-medium mb-2">Selecione uma categoria*</label>
     
     <div class="flex flex-wrap gap-2">
 

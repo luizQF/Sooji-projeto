@@ -10,22 +10,25 @@ class TarefaController extends Controller
     {
 
         $tarefas = auth()->user()->tarefas;
-        return view('tarefas', compact('tarefas'));
+        $grupos = auth()->user()->grupos;
+        return view('tarefas', compact('tarefas', 'grupos'));
     
     }
     public function store(Request $request){
         $validated = $request->validate([
             'name'      => 'required|string|max:255',
             'descricao' => 'nullable',
+            'group_id'  => 'nullable|exists:groups,id',
             'venc_date' => 'nullable|date',
             'categoria' => 'required',
             'tags'      => 'nullable'
         ]);
 
         Tarefa::create([
-            'name' => $validated['name'],
+            'name'      => $validated['name'],
             'descricao' => $validated['descricao'] ?? null,
-            'user_id' => auth()->id(),
+            'user_id'   => auth()->id(),
+            'group_id'  => $validated['group_id'],
             'venc_date' => $validated['venc_date'] ?? null,
             'categoria' => $validated['categoria'],
         ]);
@@ -48,21 +51,5 @@ class TarefaController extends Controller
         return redirect()->route('tarefas')->with('sucess', 'Tarefa Concluida');
     }
 
-    public function getTasks(Request $request){
-            // Busca tarefas entre o intervalo de datas do calendário
-        $tarefas = Tarefa::whereDate('venc_date', '>=', $request->start)
-                 ->whereDate('venc_date', '<=', $request->end)
-                 ->get();
 
-        $events = [];
-        foreach ($tarefas as $tarefa) {
-            $events[] = [
-                'title' => $tarefa->titulo,
-                'start' => $tarefa->venc_date, 
-                'url'   => route('tasks.show', $tarefa->id),
-              
-            ];
-        }
-        return response()->json($events);
-    }
 }

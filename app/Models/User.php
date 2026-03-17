@@ -36,7 +36,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tarefa::class);
     }
-    /**
+    public function grupos(){
+        return $this->hasMany(Grupos::class);
+    }
+        /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
